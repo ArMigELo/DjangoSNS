@@ -9,15 +9,21 @@
     <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
 </head>
 <body>
+    <h1>My Blog</h1>
     <img src="{% static 'blog/images/TopPhoto.jpg' %}">
     <div class="container">
-        <h1>My Blog</h1>
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.text|linebreaks }}</p>
-        <p>{{ post.posted_at }}</p>
-        <p>{{ post.updated_at }}</p>
-        <p><a href="{% url 'index' %}">indexに戻る</a></p>
-        <hr />
+        <h2>記事詳細</h2>
+        <div>
+            <h3>タイトル : {{ post.title }}</h3>
+            <p class="p1">投稿日 : {{ post.posted_at }}</p>
+            <p class="p1">更新日 : {{ post.updated_at }}</p>
+                <div class="post_text">{{ post.text|linebreaks }}</div>
+                <div class="post_image">
+                    <img src="{{ post.image.url }}">
+                </div>
+            <p class="p1"><a href="{% url 'index'%}">投稿記事一覧に戻る</a></p>
+            <hr />
+        </div>
     </div>
 </body>
 </html>
